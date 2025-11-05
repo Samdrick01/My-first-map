@@ -43,7 +43,7 @@
       */
       style: 'mapbox://styles/mapbox/outdoors-v12',
       center: [-122.18942056952604, 37.760132211623834],
-      zoom: 10
+      zoom: 12
     });
 
     map.on('load', () => {
@@ -61,6 +61,7 @@
               "properties": {
                 'name': "popeyes",
                 'description': "my favorite resturant",
+                'image': "img/1.jpeg",
               }
             },
             {
@@ -72,18 +73,20 @@
               "properties": {
                 'name': "planet fitness",
                 'description': "I workout here",
-              }
+                             'image': "img/2.jpeg",
+ }
             },
             {
               'type': 'Feature',
               'geometry': {
                 'type': 'Point',
-                'coordinates': [-122.1891918841949, 37.7696702017849]
+                'coordinates': [-122.19298467941563, 37.76159522866095]
               },
               "properties": {
                 'name': "school",
                 'description': "this is the school i go to currently",
-               }
+                            'image': "img/3.jpeg",
+   }
                }
               ]
         }
@@ -107,12 +110,12 @@
           const coordinates = e.feature.geometry.coordinates.slice();
           const name = e.feature.properties.name;
           const description = e.feature.properties.description;
-          // const image = e.feature.properties.image;
+          const image = e.feature.properties.image;
 
           new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML("<strong>" + name + "</strong><br/>" + description)
-            // .setHTML("<img src='" + image + "'><br><strong>" + name + "</strong><br/>" + description)
+            .setHTML("<img src='" + image + "'><br><strong>" + name + "</strong><br/>" + description)
             .addTo(map);
         }
       });
